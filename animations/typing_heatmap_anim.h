@@ -78,6 +78,7 @@ bool TYPING_HEATMAP(effect_params_t* params)
     }
     // Render heatmap & decrease
     uint8_t count = 0;
+    uint8_t speed = (rgb_matrix_config.speed * 4) / 256 + 1;
     for (uint8_t row = 0; row < CONFIG_MATRIX_ROWS && count < RGB_MATRIX_LED_PROCESS_LIMIT; row++) {
         for (uint8_t col = 0; col < CONFIG_MATRIX_COLS && RGB_MATRIX_LED_PROCESS_LIMIT; col++) {
             if (g_led_config.matrix_co[row][col] >= led_min && g_led_config.matrix_co[row][col] < led_max) {
@@ -92,7 +93,7 @@ bool TYPING_HEATMAP(effect_params_t* params)
                 rgb_matrix_set_color(g_led_config.matrix_co[row][col], rgb.r, rgb.g, rgb.b);
 
                 if (decrease_heatmap_values) {
-                    g_rgb_frame_buffer[row][col] = qsub8(val, 4);
+                    g_rgb_frame_buffer[row][col] = qsub8(val, speed);
                 }
             }
         }
