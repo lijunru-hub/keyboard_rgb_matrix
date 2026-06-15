@@ -1,5 +1,9 @@
 # ChangeLog
 
+## v0.2.0 - 2026-6-15
+
+* Support the led_strip version v3
+
 ## v0.1.2 - 2024-8-12
 
 * Make hotmap speed can adjustable level1-4
